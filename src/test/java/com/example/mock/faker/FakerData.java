@@ -1,9 +1,9 @@
-package com.example.Spring;
+package com.example.mock.faker;
 
 import net.datafaker.Faker;
 
-public class Data {
-    private final Faker faker = new Faker();
+public class FakerData {
+    Faker faker = new Faker();
 
     public String contactName() {
         return faker.name().fullName();

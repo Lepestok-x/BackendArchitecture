@@ -12,6 +12,7 @@ public class Customers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "contactname")
     private String contactName;
     @Column(name = "address")
@@ -23,21 +24,12 @@ public class Customers {
     @Column(name = "country")
     private String country;
 
-    public Customers(String contactName, String address, String city, String postalCode, String country) {
-          this.contactName = contactName;
-          this.address = address;
-          this.city = city;
-          this.postalCode = postalCode;
-          this.country = country;
+    public Customers(CustomersDTO customersDTO) {
+        this.contactName = customersDTO.contactName();
+        this.address = customersDTO.address();
+        this.city = customersDTO.city();
+        this.postalCode = customersDTO.postalCode();
+        this.country = customersDTO.country();
     }
-    // Тут сразу передаем дто класс, не плодя аргументами.
-    public Customers(CustomersDTO dto) {
-        this.contactName = dto.contactName();
-        this.address = dto.address();
-        this.city = dto.city();
-        this.postalCode = dto.postalCode();
-        this.country = dto.country();
-    }
-    public Customers() {} // No args
-
+    public Customers() {}
 }
