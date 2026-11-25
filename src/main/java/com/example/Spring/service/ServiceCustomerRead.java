@@ -17,7 +17,7 @@ public class ServiceCustomerRead {
 
     @Transactional(readOnly = true)
     public CustomersDTO customerId(Long id) {
-        if(id == null || id < 1) throw new AppException(String.format("ID cannot be lower than: %s", id), HttpStatus.NOT_FOUND);
+        if(id == null || id < 1) throw new AppException(String.format("ID cannot be lower than: %s", id), HttpStatus.BAD_REQUEST);
         Customers customers = customersRepositories.findById(id)
             .orElseThrow(() -> new AppException(String.format("Customer with id %s not found", id), HttpStatus.NOT_FOUND));
         return mapStruct.toDTO(customers);
